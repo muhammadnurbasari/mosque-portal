@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-lg-7 text-start">
                             <div class="h-100 d-inline-flex align-items-center me-4">
                                 <span class="fa fa-phone-alt me-2 text-dark"></span>
-                                <a href="#" class="text-secondary"><span>+012 345 6789</span></a>
+                                <a href="#" class="text-secondary"><span>+62**********</span></a>
                             </div>
                             <div class="h-100 d-inline-flex align-items-center">
                                 <span class="far fa-envelope me-2 text-dark"></span>
