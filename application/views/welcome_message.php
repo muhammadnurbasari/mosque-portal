@@ -822,6 +822,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div class="modal-body">
 						<p>WEBSITE MASJID ABDUL AZIZ SEDANG DALAM PROSES PENGERJAAN</p>
+                        <br>
+                        <small>Created by : Muhammad nur basari</small>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
