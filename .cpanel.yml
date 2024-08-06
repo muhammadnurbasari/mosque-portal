@@ -2,4 +2,4 @@
 deployment:
 tasks:
 - export DEPLOYPATH=/home/masf5266/public_html/
-- /bin/cp README.md $DEPLOYPATH
+- /bin/cp /home/masf5266/public_html/repositories/mosque-portal/README.md $DEPLOYPATH
