@@ -158,18 +158,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row g-4 mb-4">
                             <div class="col-md-6">
                                 <div class="ps-3 d-flex align-items-center justify-content-start">
-                                    <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-eye text-dark fa-4x mb-5 pb-2"></i></span>
+                                    <!-- <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-eye text-dark fa-4x mb-5 pb-2"></i></span> -->
                                     <div class="ms-4">
-                                        <h5>Our Vision</h5>
+                                        <h5>VISI</h5>
                                         <p><?= $abouts->vision; ?></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="ps-3 d-flex align-items-center justify-content-start">
-                                    <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-flag text-dark fa-4x mb-5 pb-2"></i></span>
+                                    <!-- <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-flag text-dark fa-4x mb-5 pb-2"></i></span> -->
                                     <div class="ms-4">
-                                        <h5>Our Mission</h5>
+                                        <h5>MISI</h5>
                                         <p><?= $abouts->mission; ?></p>
                                     </div>
                                 </div>
