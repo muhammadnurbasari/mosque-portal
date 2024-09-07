@@ -60,7 +60,9 @@
                                                         <td><?php echo $value['facebook'] ?></td>
                                                         <td><?php echo $value['linkedin'] ?></td>
                                                         <td><?php echo $value['address'] ?></td>
-                                                        <td><?php echo $value['image'] ?></td>
+                                                        <td>
+                                                            <img src="<?php echo $value['image'] ?>" alt="" class="img img-thumbnail">
+                                                        </td>
                                                         <td><?php echo $value['vision'] ?></td>
                                                         <td><?php echo $value['mission'] ?></td>
                                                         <td>

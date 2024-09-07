@@ -47,7 +47,7 @@
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Username :</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Username" name="username" autocomplete="off" value="<?php echo $users->username ?>">
+                                                                name="username" autocomplete="off" value="<?php echo $users->username ?>">
                                                                 <input type="hidden" name="id" value="<?php echo $users->id ?>">
                                                         </div>
                                                     </div>
@@ -55,14 +55,14 @@
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Nama :</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Nama" name="name" autocomplete="off" value="<?php echo $users->name ?>">
+                                                                name="name" autocomplete="off" value="<?php echo $users->name ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Email :</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Email" name="email" autocomplete="off" value="<?php echo $users->email ?>">
+                                                                name="email" autocomplete="off" value="<?php echo $users->email ?>">
                                                         </div>
                                                     </div>
 
@@ -70,7 +70,7 @@
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Password Baru:</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Password" name="password_baru" autocomplete="off" value="">
+                                                                name="password_baru" autocomplete="off" value="">
                                                         </div>
                                                     </div>
                                                     <a href="#" class="btn btn-primary btn-user btn-block" id="btnEdit" data-table="users">

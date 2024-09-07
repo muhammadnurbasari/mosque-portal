@@ -31,7 +31,33 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-lg-5 d-none d-lg-block bg-register-image">
-                                            <img src="<?php echo base_url('assets/plugins-login/') ?>images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+                                            <img src="<?php echo $abouts->image; ?>" alt="Image" class="img-fluid">
+                                            <hr>
+                                            <?php if ($this->session->flashdata('message_error')) { ?>
+                                                <div class="alert alert-danger alert-dismissible fade show">
+                                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                    <strong><?php echo $this->session->flashdata('message_error') ?></strong>
+                                                </div><br>
+                                            <?php } ?>
+
+                                            <?php if ($this->session->flashdata('message_success')) { ?>
+                                                <div class="alert alert-success alert-dismissible fade show">
+                                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                    <strong><?php echo $this->session->flashdata('message_success') ?></strong>
+                                                </div><br>
+                                            <?php } ?>
+                                            <form class="upload" enctype="multipart/form-data" method="post" action="<?php echo base_url('manage/abouts/change_image') ?>">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                                        <label for="">Pilih File (jpg|png|jpeg) maks 2MB:</label>
+                                                        <input type="file" class="form-control" id="exampleFirstName"
+                                                                name="image" autocomplete="off" value="" required>
+                                                            <input type="hidden" name="id" value="<?php echo $abouts->id ?>">
+                                                    </div>
+                                                </div>
+
+                                                <button class="btn btn-primary btn-user btn-block" type="submit">Ubah Gambar</button>
+                                            </form>
                                         </div>
                                         <div class="col-lg-7">
                                             <div class="p-5">
@@ -44,37 +70,67 @@
 
                                                 <form class="edit" method="post" action="<?php echo base_url('manage/abouts/edit') ?>">
                                                     <div class="form-group row">
-                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Username :</label>
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="">Phone :</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Username" name="username" autocomplete="off" value="<?php echo $abouts->username ?>">
+                                                                 name="phone_number" autocomplete="off" value="<?php echo $abouts->phone_number; ?>">
                                                                 <input type="hidden" name="id" value="<?php echo $abouts->id ?>">
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Nama :</label>
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="">Email :</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Nama" name="name" autocomplete="off" value="<?php echo $abouts->name ?>">
+                                                                 name="email" autocomplete="off" value="<?php echo $abouts->email ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Email :</label>
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="">Twitter (opsional) :</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Email" name="email" autocomplete="off" value="<?php echo $abouts->email ?>">
+                                                                 name="twitter" autocomplete="off" value="<?php echo $abouts->twitter ?>">
+                                                        </div>
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="">Instagram (opsional) :</label>
+                                                            <input type="text" class="form-control" id="exampleFirstName"
+                                                                 name="instagram" autocomplete="off" value="<?php echo $abouts->instagram ?>">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="">Facebook (opsional) :</label>
+                                                            <input type="text" class="form-control" id="exampleFirstName"
+                                                                 name="facebook" autocomplete="off" value="<?php echo $abouts->facebook ?>">
+                                                        </div>
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="">Linkedin (opsional) :</label>
+                                                            <input type="text" class="form-control" id="exampleFirstName"
+                                                                 name="linkedin" autocomplete="off" value="<?php echo $abouts->linkedin ?>">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Password Baru:</label>
-                                                            <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Password" name="password_baru" autocomplete="off" value="">
+                                                            <label for="">Alamat :</label>
+                                                            <textarea class="form-control" name="address" id="address"><?= $abouts->address; ?></textarea>
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                            <label for="">Visi :</label>
+                                                            <textarea class="form-control" name="vision" id="vision"><?= $abouts->vision; ?></textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                            <label for="">Misi :</label>
+                                                            <textarea class="form-control" name="mission" id="mission"><?= $abouts->mission; ?></textarea>
+                                                        </div>
+                                                    </div>
+
                                                     <a href="#" class="btn btn-primary btn-user btn-block" id="btnEdit" data-table="abouts">
-                                                        Edit User
+                                                        Edit
                                                     </a>
                                                 </form>
                                             </div>
