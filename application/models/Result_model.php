@@ -43,4 +43,17 @@ class Result_model extends CI_model
 		return $this->db->delete($table);
 	}
 
+	// maxid - to maxid data
+	function maxid($table)
+	{
+		$this->db->select_max('id', 'maxid');
+		$maxid = $this->db->get($table)->row();
+
+		if (empty($maxid)) {
+			return 1;
+		} else {
+			return $maxid->maxid + 1;
+		}
+	}
+
 }

@@ -74,7 +74,7 @@
                                                         </div>
                                                     </div>
                                                     <a href="#" class="btn btn-primary btn-user btn-block" id="btnEdit" data-table="users">
-                                                        Edit User
+                                                        Update
                                                     </a>
                                                 </form>
                                             </div>

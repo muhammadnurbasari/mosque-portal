@@ -23,6 +23,9 @@
     <!-- Custom styles for datatables -->
     <link href="<?php echo base_url('assets/admin-temp') ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin-temp/js/datepicker/datepicker3.css">
+
     <style type="text/css">
         .modal-content-loading {
             position: relative;

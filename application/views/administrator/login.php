@@ -29,8 +29,8 @@
         <div class="col-md-6 contents">
           <div class="row justify-content-center">
             <div class="col-md-8">
-              <div class="mb-4">
-              <h3>Log In</h3>
+              <div class="mb-4"></div>
+              <!-- <h3>Log In</h3> -->
             </div>
             <?php if ($this->session->flashdata('message_error')) { ?>
       				<div class="alert alert-danger alert-dismissible fade show">

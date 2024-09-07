@@ -43,42 +43,6 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Monitoring Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMonitoring"
-                    aria-expanded="true" aria-controls="collapseMonitoring">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Monitoring</span>
-                </a>
-                <div id="collapseMonitoring" class="collapse" aria-labelledby="headingMonitoring"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">List Monitoring:</h6>
-                        <a class="collapse-item" href="Monitoring-color.html">Stok Komponen Produksi</a>
-                        <a class="collapse-item" href="Monitoring-border.html">Stok Komponen Gudang</a>
-                    </div>
-                </div>
-            </li> -->
-
-            <!-- Nav Item - Transaksi Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTransaksi"
-                    aria-expanded="true" aria-controls="collapseTransaksi">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Transaksi</span>
-                </a>
-                <div id="collapseTransaksi" class="collapse" aria-labelledby="headingTransaksi"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">List Transaksi:</h6>
-                        <a class="collapse-item" href="Transaksi-color.html">Permintaan</a>
-                        <a class="collapse-item" href="Transaksi-border.html">Pengeluaran</a>
-                        <a class="collapse-item" href="Transaksi-border.html">Penerimaan</a>
-                        <a class="collapse-item" href="Transaksi-border.html">Produksi</a>
-                    </div>
-                </div>
-            </li> -->
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -88,11 +52,11 @@
             </div> -->
 
             <!-- Nav Item - Laporan -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url("manage/activitas"); ?>">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Laporan</span></a>
-            </li> -->
+                    <span>Aktivitas</span></a>
+            </li>
 
             <!-- Nav Item - Logout -->
             <!-- <li class="nav-item">

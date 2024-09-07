@@ -76,6 +76,9 @@
     <script src="<?php echo base_url('assets/admin-temp') ?>/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url('assets/admin-temp') ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- bootstrap datepicker -->
+    <script src="<?php echo base_url(); ?>assets/admin-temp/js/datepicker/bootstrap-datepicker.js"></script>
+
     <!-- Core plugin JavaScript-->
     <script src="<?php echo base_url('assets/admin-temp') ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -89,6 +92,15 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url('assets/admin-temp') ?>/js/demo/datatables-demo.js"></script>
     <script src="<?php echo base_url('assets/jsadmin/plugin-mnbtricks') ?>/mnbtricks.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#datepicker").datepicker({
+                autoclose: true,
+                format: "yyyy-mm-dd"
+            });
+        });
+    </script>
 
 </body>
 

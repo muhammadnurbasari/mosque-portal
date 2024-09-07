@@ -130,7 +130,7 @@
                                                     </div>
 
                                                     <a href="#" class="btn btn-primary btn-user btn-block" id="btnEdit" data-table="abouts">
-                                                        Edit
+                                                        Update
                                                     </a>
                                                 </form>
                                             </div>

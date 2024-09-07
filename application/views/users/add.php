@@ -68,7 +68,7 @@
                                                         </div>
                                                     </div>
                                                     <a href="#" class="btn btn-primary btn-user btn-block" id="btnSave" data-table="users">
-                                                        Tambah User
+                                                        Submit
                                                     </a>
                                                 </form>
                                             </div>

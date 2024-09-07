@@ -23,7 +23,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary float-left"></h6>
                                     <a href="<?= base_url('manage/users/') ?>" class="btn btn-danger btn-icon-split float-right" id="backButton" data-table="users">
                                         <span class="icon text-white-50">
-                                            <i class="fas fa-flag"></i>
+                                            <i class="fas fa-arrow-left"></i>
                                         </span>
                                         <span class="text">Kembali</span>
                                     </a>
@@ -40,35 +40,41 @@
                                                 </div>
 
                                                 <!-- alert -->
-                                                <div class="alert-add"></div>
+                                                <div class="alert-edit"></div>
 
-                                                <form class="add" method="post" action="<?php echo base_url('manage/users/add') ?>">
+                                                <form class="edit" method="post" action="<?php echo base_url('manage/users/edit') ?>">
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
+                                                            <label for="">Username :</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Username" name="username" autocomplete="off">
+                                                                name="username" autocomplete="off" value="<?php echo $users->username ?>">
+                                                                <input type="hidden" name="id" value="<?php echo $users->id ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
+                                                            <label for="">Nama :</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Nama" name="name" autocomplete="off">
+                                                                name="name" autocomplete="off" value="<?php echo $users->name ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
+                                                            <label for="">Email :</label>
                                                             <input type="text" class="form-control" id="exampleFirstName"
-                                                                placeholder="Email" name="email" autocomplete="off">
+                                                                name="email" autocomplete="off" value="<?php echo $users->email ?>">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <input type="password" class="form-control"
-                                                                id="exampleInputPassword" placeholder="Password" name="password">
+                                                            <label for="">Password Baru:</label>
+                                                            <input type="text" class="form-control" id="exampleFirstName"
+                                                                name="password_baru" autocomplete="off" value="">
                                                         </div>
                                                     </div>
-                                                    <a href="#" class="btn btn-primary btn-user btn-block" id="btnSave" data-table="users">
-                                                        Submit
+                                                    <a href="#" class="btn btn-primary btn-user btn-block" id="btnEdit" data-table="users">
+                                                        Edit User
                                                     </a>
                                                 </form>
                                             </div>
