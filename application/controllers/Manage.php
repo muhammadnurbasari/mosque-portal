@@ -158,7 +158,7 @@ class Manage extends CI_Controller {
 					$this->session->set_flashdata('message_error', $upload_result['error']);
 			 		redirect('manage/view_edit/abouts/'.$id);
 				} else {
-					unlink(explode(base_url('assets/img/'), $about->image)[1]);
+					// unlink(explode(base_url('assets/img/'), $about->image)[1]);
 					$file_name = $upload_result['file_name']['file_name'];
 					$data = [
 						"image" => base_url('assets/img/').$file_name

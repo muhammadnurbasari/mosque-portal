@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <head>
         <meta charset="utf-8">
-        <title>THEMosque - Mosque Website Template</title>
+        <title>Masjid Abdul Aziz</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
