@@ -107,8 +107,8 @@ class Manage extends CI_Controller {
 			$facebook = $this->input->post("facebook");
 			$linkedin = $this->input->post("linkedin");
 			$address = $this->input->post("address");
-			$vision = $this->input->post("vision");
-			$mission = $this->input->post("mission");
+			// $vision = $this->input->post("vision");
+			// $mission = $this->input->post("mission");
 			$id = $this->input->post("id");
 
 			$this->form_validation->set_rules("phone_number", "Phone_number", "required",["required" => "phone harus diisi"]);
@@ -118,8 +118,8 @@ class Manage extends CI_Controller {
 			// $this->form_validation->set_rules("facebook", "Facebook", "required",["required" => "facebook harus diisi"]);
 			// $this->form_validation->set_rules("linkedin", "Linkedin", "required",["required" => "linkedin harus diisi"]);
 			$this->form_validation->set_rules("address", "Address", "required",["required" => "Alamat harus diisi"]);
-			$this->form_validation->set_rules("vision", "Vision", "required",["required" => "Visi harus diisi"]);
-			$this->form_validation->set_rules("mission", "Mission", "required",["required" => "Misi	 harus diisi"]);
+			// $this->form_validation->set_rules("vision", "Vision", "required",["required" => "Visi harus diisi"]);
+			// $this->form_validation->set_rules("mission", "Mission", "required",["required" => "Misi	 harus diisi"]);
 
 			if ($this->form_validation->run() == false) {
 				echo validation_errors();
@@ -132,8 +132,8 @@ class Manage extends CI_Controller {
 					"facebook" => htmlspecialchars($facebook),
 					"linkedin" => htmlspecialchars($linkedin),
 					"address" => htmlspecialchars($address),
-					"vision" => htmlspecialchars($vision),
-					"mission" => htmlspecialchars($mission),
+					// "vision" => htmlspecialchars($vision),
+					// "mission" => htmlspecialchars($mission),
 				];
 
 				$this->Result_model->updatedata_by_id("abouts", $id, $this->audit_trails('edit', $data));
@@ -156,7 +156,7 @@ class Manage extends CI_Controller {
 				$upload_result = $this->do_upload($id, 'assets/img/', 'about_');
 				if ($upload_result['is_error']) {
 					$this->session->set_flashdata('message_error', $upload_result['error']);
-			 		redirect('manage/view_edit/abouts/'.$id);
+			 		redirect('manage/banner');
 				} else {
 					// unlink(explode(base_url('assets/img/'), $about->image)[1]);
 					$file_name = $upload_result['file_name']['file_name'];
@@ -166,13 +166,24 @@ class Manage extends CI_Controller {
 					$this->Result_model->updatedata_by_id("abouts", $id, $this->audit_trails('edit', $data));
 
 					$this->session->set_flashdata('message_success', "Berhasil ubah gambar");
-			 		redirect('manage/view_edit/abouts/'.$id);
+			 		redirect('manage/banner');
 				}
 			} else {
 				$this->session->set_flashdata('message_error', "harap pilih gambar !");
-				redirect('manage/view_edit/abouts/'.$id);
+				redirect('manage/banner');
 			}
 		}
+	}
+
+	function banner($para = '') 
+	{
+		if ($para == '') {
+			$page = "banner/index";
+			$data["info_topbar"] = "Setting Banner";
+			$data['abouts'] = $this->Result_model->getdata("abouts", 1);
+			$this->_templating($data, $page);
+		}
+
 	}
 
 	// activitas - manage activitas data

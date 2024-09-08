@@ -30,35 +30,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-lg-5 d-none d-lg-block bg-register-image">
-                                            <img src="<?php echo $abouts->image; ?>" alt="Image" class="img-fluid">
-                                            <hr>
-                                            <?php if ($this->session->flashdata('message_error')) { ?>
-                                                <div class="alert alert-danger alert-dismissible fade show">
-                                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                    <strong><?php echo $this->session->flashdata('message_error') ?></strong>
-                                                </div><br>
-                                            <?php } ?>
-
-                                            <?php if ($this->session->flashdata('message_success')) { ?>
-                                                <div class="alert alert-success alert-dismissible fade show">
-                                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                    <strong><?php echo $this->session->flashdata('message_success') ?></strong>
-                                                </div><br>
-                                            <?php } ?>
-                                            <form class="upload" enctype="multipart/form-data" method="post" action="<?php echo base_url('manage/abouts/change_image') ?>">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                                        <label for="">Pilih File (jpg|png|jpeg) maks 2MB:</label>
-                                                        <input type="file" class="form-control" id="exampleFirstName"
-                                                                name="image" autocomplete="off" value="" required>
-                                                            <input type="hidden" name="id" value="<?php echo $abouts->id ?>">
-                                                    </div>
-                                                </div>
-
-                                                <button class="btn btn-primary btn-user btn-block" type="submit">Ubah Gambar</button>
-                                            </form>
-                                        </div>
+                                        
                                         <div class="col-lg-7">
                                             <div class="p-5">
                                                 <div class="text-center">
@@ -112,20 +84,6 @@
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Alamat :</label>
                                                             <textarea class="form-control" name="address" id="address"><?= $abouts->address; ?></textarea>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Visi :</label>
-                                                            <textarea class="form-control" name="vision" id="vision"><?= $abouts->vision; ?></textarea>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Misi :</label>
-                                                            <textarea class="form-control" name="mission" id="mission"><?= $abouts->mission; ?></textarea>
                                                         </div>
                                                     </div>
 

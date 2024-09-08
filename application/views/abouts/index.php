@@ -41,9 +41,9 @@
                                                     <th>Facebook</th>
                                                     <th>Linkedin</th>
                                                     <th>Address</th>
-                                                    <th>Image</th>
+                                                    <!-- <th>Image</th>
                                                     <th>Visi</th>
-                                                    <th>Misi</th>
+                                                    <th>Misi</th> -->
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
@@ -60,11 +60,11 @@
                                                         <td><?php echo $value['facebook'] ?></td>
                                                         <td><?php echo $value['linkedin'] ?></td>
                                                         <td><?php echo $value['address'] ?></td>
-                                                        <td>
+                                                        <!-- <td>
                                                             <img src="<?php echo $value['image'] ?>" alt="" class="img img-thumbnail">
                                                         </td>
                                                         <td><?php echo $value['vision'] ?></td>
-                                                        <td><?php echo $value['mission'] ?></td>
+                                                        <td><?php echo $value['mission'] ?></td> -->
                                                         <td>
                                                             <a href="#" class="btn btn-warning btn-circle btn-sm" id="editButton" data-id="<?php echo $value['id'] ?>" data-table="abouts">
                                                                 <i class="fas fa-edit"></i>
