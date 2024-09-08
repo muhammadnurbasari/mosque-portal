@@ -32,4 +32,11 @@ class Welcome extends CI_Controller {
 		$data['activitas'] = $this->Result_model->getdata('activitas', $id);
 		$this->load->view('activitas_readmore', $data);
 	}
+
+	function event_readmore($id) 
+	{
+		$data['abouts'] = $this->Result_model->getdata('abouts', 1);
+		$data['events'] = $this->Result_model->getdata('events', $id);
+		$this->load->view('event_readmore', $data);
+	}
 }
