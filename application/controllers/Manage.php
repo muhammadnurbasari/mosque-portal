@@ -184,37 +184,45 @@ class Manage extends CI_Controller {
 			$data['activitas'] = $this->Result_model->getdata("activitas");
 			$this->_templating($data, $page);
 		} elseif ($para == "edit") {
-			$username = $this->input->post("username");
-			$name = $this->input->post("name");
-			$email = $this->input->post("email");
-			$password_baru = $this->input->post("password_baru");
+			$title = $this->input->post("title");
+			$content = $this->input->post("content");
+			$posting_date = $this->input->post("posting_date");
 			$id = $this->input->post("id");
 
-			$this->form_validation->set_rules("username", "Username", "required",["required" => "username harus diisi"]);
-			$this->form_validation->set_rules("name", "Name", "required",["required" => "nama harus diisi"]);
-			$this->form_validation->set_rules("email", "Email", "required",["required" => "Email harus diisi"]);
+			$this->form_validation->set_rules("title", "Title", "required",["required" => "title harus diisi"]);
+			$this->form_validation->set_rules("content", "Content", "required",["required" => "content harus diisi"]);
+			$this->form_validation->set_rules("posting_date", "Posting_date", "required",["required" => "tanggal posting harus diisi"]);
 
 			if ($this->form_validation->run() == false) {
-				echo validation_errors();
+				$this->session->set_flashdata('message_error', validation_errors());
+				redirect('manage/view_edit/activitas/'.$id);
 			} else {
-				if ($password_baru != "" || $password_baru != NULL) {
-					$data = [
-						"username" => htmlspecialchars($username),
-						"name" => htmlspecialchars($name),
-						"email" => htmlspecialchars($email),
-						"password" => password_hash($password_baru, PASSWORD_DEFAULT)
-					];
+				if (strcmp($_FILES['image']["name"], "") != 0) {
+					$upload_result = $this->do_upload($id, 'assets/img/', 'activitas_');
+					if ($upload_result['is_error']) {
+						$this->session->set_flashdata('message_error', $upload_result['error']);
+						redirect('manage/view_edit/activitas/'.$id);
+					} else {
+						$file_name = $upload_result['file_name']['file_name'];
+						$data = [
+							"title" => htmlspecialchars($title),
+							"content" => $content,
+							"posting_date" => htmlspecialchars($posting_date),
+							"image" => base_url('assets/img/').$file_name
+						];
+					}
 				} else {
 					$data = [
-						"username" => htmlspecialchars($username),
-						"name" => htmlspecialchars($name),
-						"email" => htmlspecialchars($email),
+						"title" => htmlspecialchars($title),
+						"content" => $content,
+						"posting_date" => htmlspecialchars($posting_date),
 					];
 				}
 
 				$this->Result_model->updatedata_by_id("activitas", $id, $this->audit_trails('edit', $data));
-
-				echo "1";
+	
+				$this->session->set_flashdata('message_success', "Berhasil edit data");
+				redirect('manage/activitas');
 			}
 		} elseif ($para == "add") {
 			$title = $this->input->post("title");
@@ -227,21 +235,22 @@ class Manage extends CI_Controller {
 
 			if ($this->form_validation->run() == false) {
 				$this->session->set_flashdata('message_error', validation_errors());
-				redirect('manage/view_edit/activitas/');
+				redirect('manage/view_add/activitas/');
 			} else {
 
 				if (isset($_FILES['image'])) {
 					$id = $this->Result_model->maxid("activitas");
-					$upload_result = $this->do_upload($id, 'assets/img/activitas/', 'activitas_');
+					$upload_result = $this->do_upload($id, 'assets/img/', 'activitas_');
 					if ($upload_result['is_error']) {
-						echo $upload_result['error'];
+						$this->session->set_flashdata('message_error', $upload_result['error']);
+						redirect('manage/view_add/activitas/');
 					} else {
 						$file_name = $upload_result['file_name']['file_name'];
 						$data = [
 							"title" => htmlspecialchars($title),
 							"content" => $content,
 							"posting_date" => htmlspecialchars($posting_date),
-							"image" => base_url('assets/img/activitas/').$file_name
+							"image" => base_url('assets/img/').$file_name
 						];
 
 						$this->Result_model->add_data("activitas", $this->audit_trails('add', $data));
@@ -251,7 +260,7 @@ class Manage extends CI_Controller {
 					}
 				} else {
 					$this->session->set_flashdata('message_error', "harap pilih gambar !");
-					redirect('manage/view_edit/activitas/');
+					redirect('manage/view_add/activitas/');
 				}
 				
 			}
@@ -272,9 +281,9 @@ class Manage extends CI_Controller {
         // $path = 'assets/img/';
 
         // make directory if not exist
-        if (!file_exists($path)) {
-            mkdir($path, 0777);
-        }
+        // if (!file_exists($path)) {
+        //     mkdir($path, 0777);
+        // }
 
         $config['upload_path']          = "./" . $path;
         $config['file_name']            = $filename.$id;

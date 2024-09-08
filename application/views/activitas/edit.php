@@ -21,7 +21,7 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary float-left"></h6>
-                                    <a href="<?= base_url('manage/users/') ?>" class="btn btn-danger btn-icon-split float-right" id="backButton" data-table="users">
+                                    <a href="<?= base_url('manage/activitas/') ?>" class="btn btn-danger btn-icon-split float-right" id="backButton" data-table="activitas">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-arrow-left"></i>
                                         </span>
@@ -42,40 +42,53 @@
                                                 <!-- alert -->
                                                 <div class="alert-edit"></div>
 
-                                                <form class="edit" method="post" action="<?php echo base_url('manage/users/edit') ?>">
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Username :</label>
-                                                            <input type="text" class="form-control" id="exampleFirstName"
-                                                                name="username" autocomplete="off" value="<?php echo $users->username ?>">
-                                                                <input type="hidden" name="id" value="<?php echo $users->id ?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Nama :</label>
-                                                            <input type="text" class="form-control" id="exampleFirstName"
-                                                                name="name" autocomplete="off" value="<?php echo $users->name ?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Email :</label>
-                                                            <input type="text" class="form-control" id="exampleFirstName"
-                                                                name="email" autocomplete="off" value="<?php echo $users->email ?>">
-                                                        </div>
-                                                    </div>
+                                                <?php if ($this->session->flashdata('message_error')) { ?>
+                                                    <div class="alert alert-danger alert-dismissible fade show">
+                                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                        <strong><?php echo $this->session->flashdata('message_error') ?></strong>
+                                                    </div><br>
+                                                <?php } ?>
 
+                                                <form enctype="multipart/form-data" class="" method="post" action="<?php echo base_url('manage/activitas/edit') ?>">
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
-                                                            <label for="">Password Baru:</label>
-                                                            <input type="text" class="form-control" id="exampleFirstName"
-                                                                name="password_baru" autocomplete="off" value="">
+                                                            <label for="">Judul</label>
+                                                            <input type="text" class="form-control" id=""
+                                                                placeholder="..." name="title" value="<?= $activitas->title; ?>" autocomplete="off" required>
+                                                                <input type="hidden" name="id" value="<?php echo $activitas->id ?>">
                                                         </div>
                                                     </div>
-                                                    <a href="#" class="btn btn-primary btn-user btn-block" id="btnEdit" data-table="users">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                            <label for="">Content</label>
+                                                            <textarea name="content" id="content" class="form-control" rows="7" required><?= $activitas->content; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                            <label for="">Tangal Posting</label>
+                                                            <input type="text" class="form-control" id="datepicker"
+                                                                placeholder="..." value="<?= $activitas->posting_date; ?>" name="posting_date" autocomplete="off" required>
+                                                                <small>note : tanggal aktivitas akan ditampilkan</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                            <label for="">Gambar</label>
+                                                            <img src="<?= $activitas->image; ?>" alt="" class="img img-thumbnail img-responsive">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12 mb-3 mb-sm-0">
+                                                            <label for="">Ubah Gambar (opsional)</label>
+                                                            <input type="file" class="form-control"
+                                                                id="" placeholder="" name="image">
+                                                        </div>
+                                                    </div>
+                                                    <!-- <a href="#" class="btn btn-primary btn-user btn-block" id="btnEdit" data-table="activitas">
                                                         Edit User
-                                                    </a>
+                                                    </a> -->
+                                                    <button class="btn btn-primary btn-user btn-block" type="submit">Update</button>
                                                 </form>
                                             </div>
                                         </div>
