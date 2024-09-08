@@ -40,8 +40,8 @@
       			<?php } ?>
             <form action="<?php echo base_url('administrator/login') ?>" method="post">
               <div class="form-group first">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" autocomplete="off" >
+                <label for="">Username</label>
+                <input type="text" class="form-control" id="username" name="username" autocomplete="off" >
               </div>
               <div class="form-group last mb-4">
                 <label for="password">Password</label>

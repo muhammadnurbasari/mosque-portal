@@ -16,10 +16,10 @@ class Administrator extends CI_Controller {
 
     public function login()
 	{
-		$email = $this->input->post('email');
+		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		
-		$cek_users = $this->Result_model->getdata_by_name('users', 'email', $email);
+		$cek_users = $this->Result_model->getdata_by_name('users', 'username', $username);
 		 if (count($cek_users) > 0) {
 		 	if (password_verify($password, $cek_users[0]['password'])) {
 
@@ -31,7 +31,7 @@ class Administrator extends CI_Controller {
 			 	redirect('administrator');
 		 	}
 		 } else {
-		 	$this->session->set_flashdata('message_error', "email belum terdaftar");
+		 	$this->session->set_flashdata('message_error', "username belum terdaftar");
 			redirect('administrator');
 		 }
 	}
