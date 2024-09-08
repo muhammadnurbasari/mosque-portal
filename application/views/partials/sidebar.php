@@ -58,6 +58,13 @@
                     <span>Aktivitas</span></a>
             </li>
 
+            <!-- Nav Item - Laporan -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url("manage/events"); ?>">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Event</span></a>
+            </li>
+
             <!-- Nav Item - Logout -->
             <!-- <li class="nav-item">
                 <a class="nav-link" href="tables.html">

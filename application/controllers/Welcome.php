@@ -15,7 +15,14 @@ class Welcome extends CI_Controller {
 
 		$this->db->limit(6);
 		$this->db->where('posting_date <= ', date('Y-m-d'));
+		$this->db->order_by("posting_date", "DESC");
 		$data['activitas'] = $this->Result_model->getdata('activitas');
+
+		$this->db->limit(3);
+		$this->db->where('posting_date <= ', date('Y-m-d'));
+		$this->db->order_by("posting_date", "DESC");
+		$data['events'] = $this->Result_model->getdata('events');
+
 		$this->load->view('welcome_message', $data);
 	}
 

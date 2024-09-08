@@ -21,7 +21,7 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary float-left"></h6>
-                                    <a href="<?= base_url('manage/activitas/') ?>" class="btn btn-danger btn-icon-split float-right" id="backButton" data-table="activitas">
+                                    <a href="<?= base_url('manage/events/') ?>" class="btn btn-danger btn-icon-split float-right" id="backButton" data-table="events">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-arrow-left"></i>
                                         </span>
@@ -49,33 +49,33 @@
                                                     </div><br>
                                                 <?php } ?>
 
-                                                <form enctype="multipart/form-data" class="" method="post" action="<?php echo base_url('manage/activitas/edit') ?>">
+                                                <form enctype="multipart/form-data" class="" method="post" action="<?php echo base_url('manage/events/edit') ?>">
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Judul</label>
                                                             <input type="text" class="form-control" id=""
-                                                                placeholder="..." name="title" value="<?= $activitas->title; ?>" autocomplete="off" required>
-                                                                <input type="hidden" name="id" value="<?php echo $activitas->id ?>">
+                                                                placeholder="..." name="title" value="<?= $events->title; ?>" autocomplete="off" required>
+                                                                <input type="hidden" name="id" value="<?php echo $events->id ?>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Content</label>
-                                                            <textarea name="content" id="content" class="form-control" rows="7" required><?= $activitas->content; ?></textarea>
+                                                            <textarea name="content" id="content" class="form-control" rows="7" required><?= $events->content; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Tangal Posting</label>
                                                             <input type="text" class="form-control" id="datepicker"
-                                                                placeholder="..." value="<?= $activitas->posting_date; ?>" name="posting_date" autocomplete="off" required>
+                                                                placeholder="..." value="<?= $events->posting_date; ?>" name="posting_date" autocomplete="off" required>
                                                                 <small>note : tanggal aktivitas akan ditampilkan</small>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Gambar</label>
-                                                            <img src="<?= $activitas->image; ?>" alt="" class="img img-thumbnail img-responsive">
+                                                            <img src="<?= $events->image; ?>" alt="" class="img img-thumbnail img-responsive">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -85,7 +85,7 @@
                                                                 id="" placeholder="" name="image">
                                                         </div>
                                                     </div>
-                                                    <!-- <a href="#" class="btn btn-primary btn-user btn-block" id="btnEdit" data-table="activitas">
+                                                    <!-- <a href="#" class="btn btn-primary btn-user btn-block" id="btnEdit" data-table="events">
                                                         Edit User
                                                     </a> -->
                                                     <button class="btn btn-primary btn-user btn-block" type="submit">Update</button>

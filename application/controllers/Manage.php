@@ -273,6 +273,104 @@ class Manage extends CI_Controller {
 		}
 	}
 
+	// events - manage events data
+	public function events($para='')
+	{
+		if ($para == '') {
+			$page = "events/index";
+			$data["info_topbar"] = "events";
+			$data['events'] = $this->Result_model->getdata("events");
+			$this->_templating($data, $page);
+		} elseif ($para == "edit") {
+			$title = $this->input->post("title");
+			$content = $this->input->post("content");
+			$posting_date = $this->input->post("posting_date");
+			$id = $this->input->post("id");
+
+			$this->form_validation->set_rules("title", "Title", "required",["required" => "title harus diisi"]);
+			$this->form_validation->set_rules("content", "Content", "required",["required" => "content harus diisi"]);
+			$this->form_validation->set_rules("posting_date", "Posting_date", "required",["required" => "tanggal posting harus diisi"]);
+
+			if ($this->form_validation->run() == false) {
+				$this->session->set_flashdata('message_error', validation_errors());
+				redirect('manage/view_edit/events/'.$id);
+			} else {
+				if (strcmp($_FILES['image']["name"], "") != 0) {
+					$upload_result = $this->do_upload($id, 'assets/img/', 'events_');
+					if ($upload_result['is_error']) {
+						$this->session->set_flashdata('message_error', $upload_result['error']);
+						redirect('manage/view_edit/events/'.$id);
+					} else {
+						$file_name = $upload_result['file_name']['file_name'];
+						$data = [
+							"title" => htmlspecialchars($title),
+							"content" => $content,
+							"posting_date" => htmlspecialchars($posting_date),
+							"image" => base_url('assets/img/').$file_name
+						];
+					}
+				} else {
+					$data = [
+						"title" => htmlspecialchars($title),
+						"content" => $content,
+						"posting_date" => htmlspecialchars($posting_date),
+					];
+				}
+
+				$this->Result_model->updatedata_by_id("events", $id, $this->audit_trails('edit', $data));
+	
+				$this->session->set_flashdata('message_success', "Berhasil edit data");
+				redirect('manage/events');
+			}
+		} elseif ($para == "add") {
+			$title = $this->input->post("title");
+			$content = $this->input->post("content");
+			$posting_date = $this->input->post("posting_date");
+
+			$this->form_validation->set_rules("title", "Title", "required",["required" => "title harus diisi"]);
+			$this->form_validation->set_rules("content", "Content", "required",["required" => "content harus diisi"]);
+			$this->form_validation->set_rules("posting_date", "Posting_date", "required",["required" => "tanggal posting harus diisi"]);
+
+			if ($this->form_validation->run() == false) {
+				$this->session->set_flashdata('message_error', validation_errors());
+				redirect('manage/view_add/events/');
+			} else {
+
+				if (isset($_FILES['image'])) {
+					$id = $this->Result_model->maxid("events");
+					$upload_result = $this->do_upload($id, 'assets/img/', 'events_');
+					if ($upload_result['is_error']) {
+						$this->session->set_flashdata('message_error', $upload_result['error']);
+						redirect('manage/view_add/events/');
+					} else {
+						$file_name = $upload_result['file_name']['file_name'];
+						$data = [
+							"title" => htmlspecialchars($title),
+							"content" => $content,
+							"posting_date" => htmlspecialchars($posting_date),
+							"image" => base_url('assets/img/').$file_name
+						];
+
+						$this->Result_model->add_data("events", $this->audit_trails('add', $data));
+		
+						$this->session->set_flashdata('message_success', "Berhasil tambah data");
+						redirect('manage/events');
+					}
+				} else {
+					$this->session->set_flashdata('message_error', "harap pilih gambar !");
+					redirect('manage/view_add/events/');
+				}
+				
+			}
+		} elseif ($para == "delete") {
+			$id = $this->input->post("id");
+
+			$this->Result_model->delete("events", $id);
+
+			echo "1";
+		}
+	}
+
 
 	// do_upload
     private function do_upload($id, $path, $filename)
