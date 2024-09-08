@@ -371,6 +371,66 @@ class Manage extends CI_Controller {
 		}
 	}
 
+	// donations - manage donations data
+	public function donations($para='')
+	{
+		if ($para == '') {
+			$page = "donations/index";
+			$data["info_topbar"] = "donations";
+			$data['donations'] = $this->Result_model->getdata("donations");
+			$this->_templating($data, $page);
+		} elseif ($para == "edit") {
+			$bank_name = $this->input->post("bank_name");
+			$bank_account = $this->input->post("bank_account");
+			$account_owner = $this->input->post("account_owner");
+			$id = $this->input->post("id");
+
+			$this->form_validation->set_rules("bank_name", "Bank_name", "required",["required" => "Bank harus diisi"]);
+			$this->form_validation->set_rules("bank_account", "Bank_account", "required",["required" => "Rekening harus diisi"]);
+			$this->form_validation->set_rules("account_owner", "Account_owner", "required",["required" => "Pemilik harus diisi"]);
+
+			if ($this->form_validation->run() == false) {
+				$this->session->set_flashdata('message_error', validation_errors());
+				redirect('manage/view_edit/donations/'.$id);
+			} else {
+				if (strcmp($_FILES['image']["name"], "") != 0) {
+					$upload_result = $this->do_upload($id, 'assets/img/', 'donations_');
+					if ($upload_result['is_error']) {
+						$this->session->set_flashdata('message_error', $upload_result['error']);
+						redirect('manage/view_edit/donations/'.$id);
+					} else {
+						$file_name = $upload_result['file_name']['file_name'];
+						$data = [
+							"bank_name" => htmlspecialchars($bank_name),
+							"bank_account" => htmlspecialchars($bank_account),
+							"account_owner" => htmlspecialchars($account_owner),
+							"qr_image" => base_url('assets/img/').$file_name
+						];
+					}
+				} else {
+					$data = [
+						"bank_name" => htmlspecialchars($bank_name),
+						"bank_account" => htmlspecialchars($bank_account),
+						"account_owner" => htmlspecialchars($account_owner),
+					];
+				}
+
+				$this->Result_model->updatedata_by_id("donations", $id, $this->audit_trails('edit', $data));
+	
+				$this->session->set_flashdata('message_success', "Berhasil edit data");
+				redirect('manage/donations');
+			}
+		} elseif ($para == "add") {
+			
+		} elseif ($para == "delete") {
+			$id = $this->input->post("id");
+
+			$this->Result_model->delete("users", $id);
+
+			echo "1";
+		}
+	}
+
 
 	// do_upload
     private function do_upload($id, $path, $filename)

@@ -23,11 +23,16 @@ class Welcome extends CI_Controller {
 		$this->db->order_by("posting_date", "DESC");
 		$data['events'] = $this->Result_model->getdata('events');
 
+		$data['wording1'] = 'Selamat Datang';
+		$data['wording2'] = 'Masjid Abdul Aziz';
+
 		$this->load->view('welcome_message', $data);
 	}
 
 	function activitas_readmore($id) 
 	{
+		$data['wording1'] = 'Detail';
+		$data['wording2'] = 'Aktivitas';
 		$data['abouts'] = $this->Result_model->getdata('abouts', 1);
 		$data['activitas'] = $this->Result_model->getdata('activitas', $id);
 		$this->load->view('activitas_readmore', $data);
@@ -35,8 +40,20 @@ class Welcome extends CI_Controller {
 
 	function event_readmore($id) 
 	{
+		$data['wording1'] = 'Detail';
+		$data['wording2'] = 'Events';
 		$data['abouts'] = $this->Result_model->getdata('abouts', 1);
 		$data['events'] = $this->Result_model->getdata('events', $id);
 		$this->load->view('event_readmore', $data);
 	}
+
+	function donation() 
+	{
+		$data['wording1'] = 'Info';
+		$data['wording2'] = 'INFAK';
+		$data['abouts'] = $this->Result_model->getdata('abouts', 1);
+		$data['donations'] = $this->Result_model->getdata('donations', 1);
+		$this->load->view('donations', $data);
+	}
+
 }

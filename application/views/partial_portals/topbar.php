@@ -90,9 +90,9 @@
                 <div class="row">
                     <div class="col-lg-7">
                         <div class="hero-header-inner animated zoomIn">
-                            <p class="fs-4 text-dark">SELAMAT DATANG </p>
-                            <h1 class="display-1 mb-5 text-dark">MASJID ABDUL AZIZ</h1>
-                            <!-- <a href="" class="btn btn-primary py-3 px-5">Read More</a> -->
+                            <p class="fs-4 text-dark"><?= $wording1; ?> </p>
+                            <h1 class="display-1 mb-5 text-dark"><?= $wording2; ?></h1>
+                            <a href="<?= base_url('welcome/donation') ?>" class="btn btn-primary py-3 px-5">INFAK <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
