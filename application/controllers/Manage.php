@@ -107,8 +107,7 @@ class Manage extends CI_Controller {
 			$facebook = $this->input->post("facebook");
 			$linkedin = $this->input->post("linkedin");
 			$address = $this->input->post("address");
-			// $vision = $this->input->post("vision");
-			// $mission = $this->input->post("mission");
+			
 			$id = $this->input->post("id");
 
 			$this->form_validation->set_rules("phone_number", "Phone_number", "required",["required" => "phone harus diisi"]);
@@ -182,6 +181,33 @@ class Manage extends CI_Controller {
 			$data["info_topbar"] = "Setting Banner";
 			$data['abouts'] = $this->Result_model->getdata("abouts", 1);
 			$this->_templating($data, $page);
+		}
+
+	}
+
+	function visimisi($para = '') 
+	{
+		if ($para == '') {
+			$page = "visimisi/index";
+			$data["info_topbar"] = "Setting Visi & Misi";
+			$data['abouts'] = $this->Result_model->getdata("abouts", 1);
+			$this->_templating($data, $page);
+		}
+
+		if ($para == 'update') {
+			$vision = $this->input->post("vision");
+			$mission = $this->input->post("mission");
+			$id = $this->input->post("id");
+			
+			$data = [
+				"vision" => htmlspecialchars($vision),
+				"mission" => htmlspecialchars($mission),
+			];
+
+			$this->Result_model->updatedata_by_id("abouts", $id, $this->audit_trails('edit', $data));
+
+			$this->session->set_flashdata('message_success', "Berhasil ubah visi dan misi");
+			redirect('manage/visimisi');
 		}
 
 	}

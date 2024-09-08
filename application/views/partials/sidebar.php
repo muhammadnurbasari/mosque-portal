@@ -40,6 +40,7 @@
                         <a class="collapse-item" href="<?php echo base_url('manage/users') ?>">Users</a>
                         <a class="collapse-item" href="<?php echo base_url('manage/abouts') ?>">Info Masjid</a>
                         <a class="collapse-item" href="<?php echo base_url('manage/banner') ?>">Banner</a>
+                        <a class="collapse-item" href="<?php echo base_url('manage/visimisi') ?>">Visi & Misi</a>
                         <a class="collapse-item" href="<?php echo base_url('manage/donations') ?>">Rekening INFAK</a>
                     </div>
                 </div>
