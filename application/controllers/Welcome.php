@@ -56,4 +56,30 @@ class Welcome extends CI_Controller {
 		$this->load->view('donations', $data);
 	}
 
+	function about() 
+	{
+		$data['wording1'] = 'Tentang';
+		$data['wording2'] = 'Masjid Abdul Aziz';
+		$data['abouts'] = $this->Result_model->getdata('abouts', 1);
+		$this->load->view('about', $data);
+	}
+
+	function activitas() 
+	{
+		$data['wording1'] = 'List';
+		$data['wording2'] = 'Aktivitas';
+		$data['abouts'] = $this->Result_model->getdata('abouts', 1);
+		$data['activitas'] = $this->Result_model->getdata('activitas');
+		$this->load->view('activitas', $data);
+	}
+
+	function events() 
+	{
+		$data['wording1'] = 'List';
+		$data['wording2'] = 'Events';
+		$data['abouts'] = $this->Result_model->getdata('abouts', 1);
+		$data['events'] = $this->Result_model->getdata('events');
+		$this->load->view('events', $data);
+	}
+
 }
