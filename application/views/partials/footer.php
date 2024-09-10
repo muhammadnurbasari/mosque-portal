@@ -93,11 +93,24 @@
     <script src="<?php echo base_url('assets/admin-temp') ?>/js/demo/datatables-demo.js"></script>
     <script src="<?php echo base_url('assets/jsadmin/plugin-mnbtricks') ?>/mnbtricks.js"></script>
 
+    <!-- tinymce wysiwyg editor -->
+    <script src="<?php echo base_url('assets/admin-temp/tinymce_7.3.0/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
+
     <script>
         $(document).ready(function () {
             $("#datepicker").datepicker({
                 autoclose: true,
                 format: "yyyy-mm-dd"
+            });
+
+            tinymce.init({
+                selector: 'textarea',  // change this value according to your HTML
+                plugins: 'lists',
+                menu: {
+                    edit: { title: 'Edit', items: 'undo, redo, selectall' }
+                },
+
+                toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | help | orderlist | checklist',
             });
         });
     </script>

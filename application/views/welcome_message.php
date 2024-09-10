@@ -19,25 +19,18 @@
                         </div>
                     </div> -->
                     <div class="col-xl-12 wow fadeIn" data-wow-delay="0.5s">
-                        <p class="fs-5 text-uppercase text-primary">VISI & MISI</p>
-                        <!-- <h1 class="display-5 pb-4 m-0">Allah Help Those Who Help Themselves</h1>
-                        <p class="pb-4">Lorem ipsum dolor sit amet elit. Donec tempus eros vel dolor mattis aliquam. Etiam quis mauris justo. Vivamus purus nulla, rutrum ac risus in.</p> -->
+                        <h1 class="display-5 pb-4 m-0 text-center text-primary">Allah Menolong Mereka yang Menolong Dirinya Sendiri</h1>
+                        <!-- <h3 class="fs-5 text-uppercase text-primary text-center">VISI dan MISI</h3> -->
                         <div class="row g-4 mb-4">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="ps-3 d-flex align-items-center justify-content-start">
                                     <!-- <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-eye text-dark fa-4x mb-5 pb-2"></i></span> -->
                                     <div class="ms-4">
-                                        <h5>VISI</h5>
-                                        <p><?= $abouts->vision; ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="ps-3 d-flex align-items-center justify-content-start">
-                                    <!-- <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-flag text-dark fa-4x mb-5 pb-2"></i></span> -->
-                                    <div class="ms-4">
-                                        <h5>MISI</h5>
-                                        <p><?= $abouts->mission; ?></p>
+                                        <h5 class="text-center">VISI</h5>
+                                        <p class="text-center"><?= $abouts->vision; ?></p>
+
+                                        <h5 class="text-center">MISI</h5>
+                                        <p><?= htmlspecialchars_decode($abouts->mission); ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +95,7 @@
                                  <!-- <img src="<?= $act['image']; ?>" alt="" class="img img-responsive img-thumbnail" > -->
                                 <div class="ms-4">
                                     <h4><?= $act['title'] ?></h4>
-                                    <p class="mb-4"><?= substr($act['content'],0,40).'...'; ?></p>
+                                    <p class="mb-4"><?= strip_tags(htmlspecialchars_decode(substr($act['content'],0,40).'...')); ?></p>
                                     <a href="<?= base_url('welcome/activitas_readmore/'.$act['id']) ?>" class="btn btn-primary px-3">Read More</a>
                                 </div>
                             </div>
@@ -142,7 +135,7 @@
                         <div class="col-9 col-lg-6 border-start border-dark pb-5">
                             <div class="ms-3">
                                 <h4 class="mb-3"><?= $event['title']; ?></h4>
-                                <p class="mb-4"><?= substr($event['content'],0,110).'...'; ?></p>
+                                <p class="mb-4"><?= strip_tags(htmlspecialchars_decode(substr($event['content'],0,110).'...')); ?></p>
                                 <a href="<?= base_url('welcome/event_readmore/'.$event['id']) ?>" class="btn btn-primary px-3">Detail</a>
                             </div>
                         </div>

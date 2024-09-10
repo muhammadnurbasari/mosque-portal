@@ -17,7 +17,7 @@
                             <!-- <img src="<?= $act['image']; ?>" alt="" class="img img-responsive img-thumbnail" > -->
                         <div class="ms-4">
                             <h4><?= $act['title'] ?></h4>
-                            <p class="mb-4"><?= substr($act['content'],0,40).'...'; ?></p>
+                            <p class="mb-4"><?= strip_tags(htmlspecialchars_decode(substr($act['content'],0,40).'...')); ?></p>
                             <a href="<?= base_url('welcome/activitas_readmore/'.$act['id']) ?>" class="btn btn-primary px-3">Read More</a>
                         </div>
                     </div>

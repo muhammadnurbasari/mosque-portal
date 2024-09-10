@@ -28,7 +28,7 @@
                 <div class="col-9 col-lg-6 border-start border-dark pb-5">
                     <div class="ms-3">
                         <h4 class="mb-3"><?= $event['title']; ?></h4>
-                        <p class="mb-4"><?= substr($event['content'],0,110).'...'; ?></p>
+                        <p class="mb-4"><?= strip_tags(htmlspecialchars_decode(substr($event['content'],0,110).'...')); ?></p>
                         <a href="<?= base_url('welcome/event_readmore/'.$event['id']) ?>" class="btn btn-primary px-3">Detail</a>
                     </div>
                 </div>

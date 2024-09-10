@@ -13,7 +13,7 @@
                 <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
                     <div class="ms-4">
                         <img src="<?= $events->image; ?>" alt="" class="img img-responsive img-thumbnail">
-                        <p class="mb-4"><?= $events->content; ?></p>
+                        <p class="mb-4"><?= htmlspecialchars_decode($events->content); ?></p>
                     </div>
                 </div>
             </div>

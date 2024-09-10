@@ -54,7 +54,7 @@
                                                     <tr>
                                                         <td><?php echo $no++ ?></td>
                                                         <td><?php echo $value['title'] ?></td>
-                                                        <td><?php echo $value['content'] ?></td>
+                                                        <td><?php echo htmlspecialchars_decode($value['content']) ?></td>
                                                         <td><?php echo $value['posting_date'] ?></td>
                                                         <td>
                                                             <img src="<?php echo $value['image'] ?>" alt="" class="img img-responsive img-thumbnail">

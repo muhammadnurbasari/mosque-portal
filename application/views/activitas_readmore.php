@@ -13,7 +13,7 @@
                 <div class="activities-item p-4 wow fadeIn" data-wow-delay="0.1s">
                     <div class="ms-4">
                         <img src="<?= $activitas->image; ?>" alt="" class="img img-responsive img-thumbnail">
-                        <p class="mb-4"><?= $activitas->content; ?></p>
+                        <p class="mb-4"><?= htmlspecialchars_decode($activitas->content); ?></p>
                     </div>
                 </div>
             </div>

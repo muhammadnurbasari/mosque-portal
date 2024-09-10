@@ -243,7 +243,7 @@ class Manage extends CI_Controller {
 						$file_name = $upload_result['file_name']['file_name'];
 						$data = [
 							"title" => htmlspecialchars($title),
-							"content" => $content,
+							"content" => htmlspecialchars($content),
 							"posting_date" => htmlspecialchars($posting_date),
 							"image" => base_url('assets/img/').$file_name
 						];
@@ -251,7 +251,7 @@ class Manage extends CI_Controller {
 				} else {
 					$data = [
 						"title" => htmlspecialchars($title),
-						"content" => $content,
+						"content" => htmlspecialchars($content),
 						"posting_date" => htmlspecialchars($posting_date),
 					];
 				}
@@ -285,7 +285,7 @@ class Manage extends CI_Controller {
 						$file_name = $upload_result['file_name']['file_name'];
 						$data = [
 							"title" => htmlspecialchars($title),
-							"content" => $content,
+							"content" => htmlspecialchars($content),
 							"posting_date" => htmlspecialchars($posting_date),
 							"image" => base_url('assets/img/').$file_name
 						];
@@ -341,7 +341,7 @@ class Manage extends CI_Controller {
 						$file_name = $upload_result['file_name']['file_name'];
 						$data = [
 							"title" => htmlspecialchars($title),
-							"content" => $content,
+							"content" => htmlspecialchars($content),
 							"posting_date" => htmlspecialchars($posting_date),
 							"image" => base_url('assets/img/').$file_name
 						];
@@ -349,7 +349,7 @@ class Manage extends CI_Controller {
 				} else {
 					$data = [
 						"title" => htmlspecialchars($title),
-						"content" => $content,
+						"content" => htmlspecialchars($content),
 						"posting_date" => htmlspecialchars($posting_date),
 					];
 				}
@@ -383,7 +383,7 @@ class Manage extends CI_Controller {
 						$file_name = $upload_result['file_name']['file_name'];
 						$data = [
 							"title" => htmlspecialchars($title),
-							"content" => $content,
+							"content" => htmlspecialchars($content),
 							"posting_date" => htmlspecialchars($posting_date),
 							"image" => base_url('assets/img/').$file_name
 						];

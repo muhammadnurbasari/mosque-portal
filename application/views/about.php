@@ -35,7 +35,7 @@
                             <!-- <span class="bg-primary btn-md-square rounded-circle mt-4 me-2"><i class="fa fa-flag text-dark fa-4x mb-5 pb-2"></i></span> -->
                             <div class="ms-4">
                                 <h5>MISI</h5>
-                                <p><?= $abouts->mission; ?></p>
+                                <p><?= htmlspecialchars_decode($abouts->mission); ?></p>
                             </div>
                         </div>
                     </div>
