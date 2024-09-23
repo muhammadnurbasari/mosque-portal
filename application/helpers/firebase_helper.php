@@ -7,7 +7,7 @@
 function generateJWT() 
 {
     // Load the service account JSON file
-    $serviceAccountPath = './masjidabdulaziz-84099-firebase-adminsdk-edd78-8428f4b643.json';
+    $serviceAccountPath = './masjidabdulaziz-84099-firebase-adminsdk-edd78-6ad37c2147.json';
     $serviceAccount = json_decode(file_get_contents($serviceAccountPath), true);
 
     // Extract information from the service account JSON file
