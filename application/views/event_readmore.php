@@ -14,6 +14,8 @@
                     <div class="ms-4">
                         <img src="<?= $events->image; ?>" alt="" class="img img-responsive img-thumbnail">
                         <p class="mb-4"><?= htmlspecialchars_decode($events->content); ?></p>
+
+                        <a class="btn btn-sm btn-primary" href="https://api.whatsapp.com/send?text=<?= urlencode($activitas->title . ' ' . current_url()); ?>" target="_blank"><i class="fa fa-share fa-fw"></i> share</a>
                     </div>
                 </div>
             </div>
