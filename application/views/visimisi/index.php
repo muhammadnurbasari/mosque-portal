@@ -60,7 +60,7 @@
 
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Misi</label>
-                                                                <textarea name="mission" class="form-control" id="mission" required><?= $abouts->mission; ?></textarea>
+                                                                <textarea name="mission" class="form-control textarea" id="mission"><?= $abouts->mission; ?></textarea>
                                                                 <input type="hidden" name="id" value="<?php echo $abouts->id ?>">
                                                         </div>
                                                     </div>

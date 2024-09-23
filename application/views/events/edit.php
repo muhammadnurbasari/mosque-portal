@@ -61,7 +61,7 @@
                                                     <div class="form-group row">
                                                         <div class="col-sm-12 mb-3 mb-sm-0">
                                                             <label for="">Content</label>
-                                                            <textarea name="content" id="content" class="form-control" rows="7" required><?= $events->content; ?></textarea>
+                                                            <textarea name="content" id="content" class="form-control textarea" rows="7"><?= $events->content; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">

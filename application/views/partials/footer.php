@@ -104,7 +104,7 @@
             });
 
             tinymce.init({
-                selector: 'textarea',  // change this value according to your HTML
+                selector: 'textarea.textarea',  // change this value according to your HTML
                 plugins: 'lists',
                 menu: {
                     edit: { title: 'Edit', items: 'undo, redo, selectall' }

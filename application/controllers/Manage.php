@@ -8,6 +8,7 @@ class Manage extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Result_model');
 		$this->load->library("form_validation");
+		$this->load->helper('firebase_helper');
 
 		// validation login 
 		if (!$this->session->userdata('user')) {
@@ -111,14 +112,8 @@ class Manage extends CI_Controller {
 			$id = $this->input->post("id");
 
 			$this->form_validation->set_rules("phone_number", "Phone_number", "required",["required" => "phone harus diisi"]);
-			// $this->form_validation->set_rules("twitter", "Twitter", "required",["required" => "twitter harus diisi"]);
 			$this->form_validation->set_rules("email", "Email", "required",["required" => "Email harus diisi"]);
-			// $this->form_validation->set_rules("instagram", "Instagram", "required",["required" => "instagram harus diisi"]);
-			// $this->form_validation->set_rules("facebook", "Facebook", "required",["required" => "facebook harus diisi"]);
-			// $this->form_validation->set_rules("linkedin", "Linkedin", "required",["required" => "linkedin harus diisi"]);
 			$this->form_validation->set_rules("address", "Address", "required",["required" => "Alamat harus diisi"]);
-			// $this->form_validation->set_rules("vision", "Vision", "required",["required" => "Visi harus diisi"]);
-			// $this->form_validation->set_rules("mission", "Mission", "required",["required" => "Misi	 harus diisi"]);
 
 			if ($this->form_validation->run() == false) {
 				echo validation_errors();
@@ -131,8 +126,6 @@ class Manage extends CI_Controller {
 					"facebook" => htmlspecialchars($facebook),
 					"linkedin" => htmlspecialchars($linkedin),
 					"address" => htmlspecialchars($address),
-					// "vision" => htmlspecialchars($vision),
-					// "mission" => htmlspecialchars($mission),
 				];
 
 				$this->Result_model->updatedata_by_id("abouts", $id, $this->audit_trails('edit', $data));
@@ -235,17 +228,24 @@ class Manage extends CI_Controller {
 				redirect('manage/view_edit/activitas/'.$id);
 			} else {
 				if (strcmp($_FILES['image']["name"], "") != 0) {
-					$upload_result = $this->do_upload($id, 'assets/img/', 'activitas_');
-					if ($upload_result['is_error']) {
-						$this->session->set_flashdata('message_error', $upload_result['error']);
+
+					$image = $this->Result_model->getdata("activitas", $id)->image;
+
+					if (!file_exists($image)) {
+						deleteFileStorage($image);
+					}
+
+					$uploadfirebase = uploadFileToStorage($_FILES['image']);
+					if (!$uploadfirebase["is_success"]) {
+						$this->session->set_flashdata('message_error', $uploadfirebase["message"]);
 						redirect('manage/view_edit/activitas/'.$id);
 					} else {
-						$file_name = $upload_result['file_name']['file_name'];
+						$file_name = $uploadfirebase["data"]["download_link"];
 						$data = [
 							"title" => htmlspecialchars($title),
 							"content" => htmlspecialchars($content),
 							"posting_date" => htmlspecialchars($posting_date),
-							"image" => base_url('assets/img/').$file_name
+							"image" => $file_name
 						];
 					}
 				} else {
@@ -276,18 +276,18 @@ class Manage extends CI_Controller {
 			} else {
 
 				if (isset($_FILES['image'])) {
-					$id = $this->Result_model->maxid("activitas");
-					$upload_result = $this->do_upload($id, 'assets/img/', 'activitas_');
-					if ($upload_result['is_error']) {
-						$this->session->set_flashdata('message_error', $upload_result['error']);
+
+					$uploadfirebase = uploadFileToStorage($_FILES['image']);
+					if (!$uploadfirebase["is_success"]) {
+						$this->session->set_flashdata('message_error', $uploadfirebase["message"]);
 						redirect('manage/view_add/activitas/');
 					} else {
-						$file_name = $upload_result['file_name']['file_name'];
+						$file_name = $uploadfirebase["data"]["download_link"];
 						$data = [
 							"title" => htmlspecialchars($title),
 							"content" => htmlspecialchars($content),
 							"posting_date" => htmlspecialchars($posting_date),
-							"image" => base_url('assets/img/').$file_name
+							"image" => $file_name
 						];
 
 						$this->Result_model->add_data("activitas", $this->audit_trails('add', $data));
@@ -303,10 +303,15 @@ class Manage extends CI_Controller {
 			}
 		} elseif ($para == "delete") {
 			$id = $this->input->post("id");
+			$image = $this->Result_model->getdata("activitas", $id)->image;
+
+			if (!file_exists($image)) {
+				deleteFileStorage($image);
+			}
 
 			$this->Result_model->delete("activitas", $id);
-
 			echo "1";
+
 		}
 	}
 
@@ -333,17 +338,24 @@ class Manage extends CI_Controller {
 				redirect('manage/view_edit/events/'.$id);
 			} else {
 				if (strcmp($_FILES['image']["name"], "") != 0) {
-					$upload_result = $this->do_upload($id, 'assets/img/', 'events_');
-					if ($upload_result['is_error']) {
-						$this->session->set_flashdata('message_error', $upload_result['error']);
+
+					$image = $this->Result_model->getdata("activitas", $id)->image;
+
+					if (!file_exists($image)) {
+						deleteFileStorage($image);
+					}
+
+					$uploadfirebase = uploadFileToStorage($_FILES['image']);
+					if (!$uploadfirebase["is_success"]) {
+						$this->session->set_flashdata('message_error', $uploadfirebase["message"]);
 						redirect('manage/view_edit/events/'.$id);
 					} else {
-						$file_name = $upload_result['file_name']['file_name'];
+						$file_name = $uploadfirebase["data"]["download_link"];
 						$data = [
 							"title" => htmlspecialchars($title),
 							"content" => htmlspecialchars($content),
 							"posting_date" => htmlspecialchars($posting_date),
-							"image" => base_url('assets/img/').$file_name
+							"image" => $file_name
 						];
 					}
 				} else {
@@ -374,18 +386,18 @@ class Manage extends CI_Controller {
 			} else {
 
 				if (isset($_FILES['image'])) {
-					$id = $this->Result_model->maxid("events");
-					$upload_result = $this->do_upload($id, 'assets/img/', 'events_');
-					if ($upload_result['is_error']) {
-						$this->session->set_flashdata('message_error', $upload_result['error']);
+					
+					$uploadfirebase = uploadFileToStorage($_FILES['image']);
+					if (!$uploadfirebase["is_success"]) {
+						$this->session->set_flashdata('message_error', $uploadfirebase["message"]);
 						redirect('manage/view_add/events/');
 					} else {
-						$file_name = $upload_result['file_name']['file_name'];
+						$file_name = $uploadfirebase["data"]["download_link"];
 						$data = [
 							"title" => htmlspecialchars($title),
 							"content" => htmlspecialchars($content),
 							"posting_date" => htmlspecialchars($posting_date),
-							"image" => base_url('assets/img/').$file_name
+							"image" => $file_name
 						];
 
 						$this->Result_model->add_data("events", $this->audit_trails('add', $data));
